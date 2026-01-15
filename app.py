@@ -9,6 +9,26 @@ st.set_page_config(
     layout="wide",
 )
 
+
+# Function to inject meta tags into <head>
+def inject_meta_tags():
+    meta_code = """
+    <script>
+        var meta1 = document.createElement('meta');
+        meta1.name = "google-site-verification";
+        meta1.content = "4_CV0Aug369psklcNEZAtpgncPXPhvqnsHxzkk-2mjI";
+        document.getElementsByTagName('head')[0].appendChild(meta1);
+
+        var meta2 = document.createElement('meta');
+        meta2.name = "description";
+        meta2.content = "Wordファイル(.docx)に指定のルビを振れる無料ツールです。同人誌や小説の原稿作成など。リスト登録で一括変換、ページ毎の適用設定などが可能です。";
+        document.getElementsByTagName('head')[0].appendChild(meta2);
+    </script>
+    """
+    st.markdown(meta_code, unsafe_allow_html=True)
+
+inject_meta_tags()
+
 # Load External Resources
 def load_css(file_name):
     # Use absolute path to ensure file is found regardless of CWD
