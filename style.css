@@ -1,0 +1,86 @@
+/* Global Styles Overrides */
+/* Ensure basics are enforced even if theme config fails or for specific elements */
+
+.stApp {
+    background-color: #f0f2f6 !important;
+    color: #333333 !important;
+}
+
+/* Header */
+.main-header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1E3A8A !important;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.sub-header {
+    font-size: 1rem;
+    color: #4B5563 !important;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Card Styling for Containers */
+/* Streamlit's st.container(border=True) creates a div with data-testid="stVerticalBlockBorderWrapper" */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+    color: #333333 !important;
+}
+
+/* Headings inside cards */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333333 !important;
+}
+
+/* Inputs */
+.stTextInput input {
+    color: #333333 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Buttons */
+button[kind="primary"] {
+    background-color: #2563EB !important;
+    border-color: #2563EB !important;
+    color: #FFFFFF !important;
+}
+
+button[kind="primary"]:hover {
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+}
+
+button[kind="secondary"] {
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    border-color: #E5E7EB !important;
+}
+
+/* Text elements */
+p,
+label,
+span,
+div {
+    color: #333333;
+    /* Fallback text color */
+}
+
+/* Fix for specific Streamlit elements that might inherit dark mode styles */
+[data-testid="stMarkdownContainer"] p {
+    color: #333333 !important;
+}
+
+/* Hide Streamlit Header and Toolbar */
+header[data-testid="stHeader"],
+.stAppToolbar {
+    display: none !important;
+    visibility: hidden !important;
+}
