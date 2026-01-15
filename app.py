@@ -11,14 +11,22 @@ st.set_page_config(
 
 # Load External Resources
 def load_css(file_name):
-    # Check if file exists to prevent errors if missing
-    if os.path.exists(file_name):
-        with open(file_name) as f:
+    # Use absolute path to ensure file is found regardless of CWD
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, file_name)
+    
+    if os.path.exists(file_path):
+        with open(file_path, encoding='utf-8') as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    else:
+        st.warning(f"Style file not found: {file_name}")
 
 def load_html(file_name):
-    if os.path.exists(file_name):
-        with open(file_name, encoding='utf-8') as f:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, file_name)
+    
+    if os.path.exists(file_path):
+        with open(file_path, encoding='utf-8') as f:
             st.markdown(f.read(), unsafe_allow_html=True)
 
 load_css("style.css")
