@@ -1,33 +1,31 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import os
 from ruby_processor import apply_ruby_to_document
 
 # Page config
 st.set_page_config(
-    page_title="Word特殊ルビ振りツール | 同人誌のルビ振りツール",
+    page_title="Wordルビ自動振りツール | 同人誌の固有名詞のルビ振りツール",
     layout="wide",
 )
 
+# Meta tags injection (Streamlit workaround to append to <head>)
+# Meta tags injection (Streamlit workaround to append to <head> via iframe)
+# components.html creates an iframe, so we use window.top to access the main document
+components.html("""
+<script>
+    var meta1 = window.top.document.createElement('meta');
+    meta1.name = "google-site-verification";
+    meta1.content = "4_CV0Aug369psklcNEZAtpgncPXPhvqnsHxzkk-2mjI";
+    window.top.document.getElementsByTagName('head')[0].appendChild(meta1);
 
-# Function to inject meta tags into <head>
-def inject_meta_tags():
-    meta_code = """
-    <script>
-        var meta1 = document.createElement('meta');
-        meta1.name = "google-site-verification";
-        meta1.content = "4_CV0Aug369psklcNEZAtpgncPXPhvqnsHxzkk-2mjI";
-        document.getElementsByTagName('head')[0].appendChild(meta1);
-
-        var meta2 = document.createElement('meta');
-        meta2.name = "description";
-        meta2.content = "Wordファイル(.docx)に指定のルビを振れる無料ツールです。同人誌や小説の原稿作成など。リスト登録で一括変換、ページ毎の適用設定などが可能です。";
-        document.getElementsByTagName('head')[0].appendChild(meta2);
-    </script>
-    """
-    st.markdown(meta_code, unsafe_allow_html=True)
-
-inject_meta_tags()
+    var meta2 = window.top.document.createElement('meta');
+    meta2.name = "description";
+    meta2.content = "Wordファイル(.docx)に指定のルビを振れる無料ツールです。同人誌や小説の原稿作成など。リスト登録で一括変換、ページ毎の適用設定などが可能です。";
+    window.top.document.getElementsByTagName('head')[0].appendChild(meta2);
+</script>
+""", height=0, width=0)
 
 # Load External Resources
 def load_css(file_name):
