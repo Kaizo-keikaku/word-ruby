@@ -5,7 +5,7 @@ from ruby_processor import apply_ruby_to_document
 
 # Page config
 st.set_page_config(
-    page_title="Wordルビ自動振りツール",
+    page_title="Word特殊ルビ振りツール | 同人誌のルビ振りツール",
     layout="wide",
 )
 
